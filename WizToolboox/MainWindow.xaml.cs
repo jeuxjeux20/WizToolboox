@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,39 @@ namespace WizToolboox
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "Batch files (.bat)|*.bat|Everything (*.*)|*.*";
+
+            try
+            {
+                fileDialog.InitialDirectory = (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads");
+            }
+            catch (Exception)
+            {
+                fileDialog.InitialDirectory = (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+            }
+            if (fileDialog.ShowDialog() == true)
+            {
+                using (var fileRead = new StreamReader(fileDialog.OpenFile()))
+                {
+
+                    if (fileRead.ReadToEnd().ToLower().Contains("rd"))
+                    {
+                        MessageBox.Show("The file is suspicious... it contains rd", "Suspicious",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("This file seems to be fine", "Fine", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    fileRead.Close();
+                }
+
+            }
         }
     }
 }

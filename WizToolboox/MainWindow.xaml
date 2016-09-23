@@ -6,7 +6,25 @@
         xmlns:local="clr-namespace:WizToolboox"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+    <Grid HorizontalAlignment="Left" Width="517">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="92*"/>
+            <RowDefinition Height="227*"/>
+        </Grid.RowDefinitions>
+        <Viewbox Margin="0,0,0,-1.191">
+            <Label x:Name="align" Content="The WizToolbox" Height="26.851" Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        </Viewbox>
+        <TabControl x:Name="tabPanel" Margin="0,10,0,0" Grid.Row="1">
+            <TabItem Header="Main Tools">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="17*"/>
+                        <RowDefinition Height="46*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="button" Content="Check a file" HorizontalAlignment="Left" Style="{DynamicResource SimpleButton}" Width="111" Margin="10,10,0,10" Click="button_Click"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

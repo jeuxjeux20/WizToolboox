@@ -8,11 +8,11 @@ using System.Windows;
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("WizToolboox")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Anti .rd for bat ;)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("WizToolboox")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Errr  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -28,7 +28,7 @@ using System.Windows;
 //l'attribut NeutralResourceLanguage ci-dessous. Mettez à jour "fr-FR" dans
 //la ligne ci-après pour qu'elle corresponde au paramètre UICulture du fichier projet.
 
-//[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
+[assembly: NeutralResourcesLanguage("en-US")]
 
 
 [assembly: ThemeInfo(
@@ -51,5 +51,5 @@ using System.Windows;
 // Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut 
 // en utilisant '*', comme indiqué ci-dessous :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.2.1.0")]
+[assembly: AssemblyFileVersion("0.2.1.0")]
