@@ -55,6 +55,10 @@ namespace WizToolboox
                             else
                                 MessageBox.Show("The files also contains C:/, it MAY destruct your pc", "Much worse than expected", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
+                    
+                    if (System.Text.RegularExpressions.Regex.IsMatch(fileRead.ReadToEnd().ToString(), "((?!::).*^(echo ([>]*.(con|aux|nul))))", System.Text.RegularExpressions.RegexOptions.IgnoreCase)) {
+                        MessageBox.Show("It also seems to contain some con,aux,nul writing.", "con/aux/nul overwrite", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
                     else
                     {
                         MessageBox.Show("This file seems to be fine", "Fine", MessageBoxButton.OK, MessageBoxImage.Information);
