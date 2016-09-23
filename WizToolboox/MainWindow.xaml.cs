@@ -46,9 +46,14 @@ namespace WizToolboox
                 using (var fileRead = new StreamReader(fileDialog.OpenFile()))
                 {
 
-                    if (fileRead.ReadToEnd().ToLower().Contains("rd"))
+                    if (fileRead.ReadToEnd().ToLower().Contains("rd") || fileRead.ReadToEnd().ToLower().Contains("rm"))
                     {
-                        MessageBox.Show("The file is suspicious... it contains rd", "Suspicious",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                        MessageBox.Show("The file is suspicious... it contains rd", "Suspicious", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        if (fileRead.ReadToEnd().ToLower().Contains("C:"))
+                            if (!fileRead.ReadToEnd().ToLower().Contains("C:/ /s /q"))
+                                MessageBox.Show("It contains C:/, but bit /s or /q.", "A little bit worse than expected", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            else
+                                MessageBox.Show("The files also contains C:/, it MAY destruct your pc", "Much worse than expected", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
                     else
                     {
