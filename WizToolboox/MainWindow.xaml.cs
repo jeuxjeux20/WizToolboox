@@ -25,7 +25,16 @@ namespace WizToolboox
         public MainWindow()
         {
             InitializeComponent();
-
+            Closing += MainWindow_Closing;
+        }
+        private List<Down> WindowsDown = new List<Down>();
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            foreach (var item in WindowsDown)
+            {
+                item.Close();
+            }
+            
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -67,6 +76,12 @@ namespace WizToolboox
                 }
 
             }
+        }
+        
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {   var downloadContext = new Down();
+            WindowsDown.Add(downloadContext);          
+            downloadContext.Show();
         }
     }
 }

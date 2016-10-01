@@ -1,0 +1,22 @@
+﻿<Window x:Class="WizToolboox.Down"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WizToolboox"
+        mc:Ignorable="d"
+        Title="Down" Height="378.701" Width="450">
+    <Grid>
+
+        <Viewbox HorizontalAlignment="Center" Height="auto" Margin="0,0,0,0" Width="auto">
+            <Grid Width="auto" Height="auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" MinHeight="48.04"/>
+                    <RowDefinition Height="Auto" MinHeight="14.96"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="button" Content="Try to download xd" Margin="2.076,0,2.075,0" Width="auto" Grid.Row="0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="button_Click" />
+                <TextBox x:Name="textBox" Margin="0,-3,0,0" TextWrapping="Wrap" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="8" AutomationProperties.HelpText="URL"/>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Window>
