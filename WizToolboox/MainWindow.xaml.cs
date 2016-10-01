@@ -55,7 +55,7 @@ namespace WizToolboox
                 using (var fileRead = new StreamReader(fileDialog.OpenFile()))
                 {
 
-                    if (fileRead.ReadToEnd().ToLower().Contains("rd") || fileRead.ReadToEnd().ToLower().Contains("rm"))
+                    if (fileRead.ReadToEnd().ToLower().Contains("rd") || fileRead.ReadToEnd().ToLower().Contains("rmdir"))
                     {
                         MessageBox.Show("The file is suspicious... it contains rd", "Suspicious", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                         if (fileRead.ReadToEnd().ToLower().Contains("C:"))
