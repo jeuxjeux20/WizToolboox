@@ -23,10 +23,17 @@ namespace WizToolboox
     public partial class MainWindow : Window
     {
         public MainWindow()
-        {
+        {            
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+            
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
             Closing += MainWindow_Closing;
         }
+
         private List<Down> WindowsDown = new List<Down>();
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -34,7 +41,7 @@ namespace WizToolboox
             {
                 item.Close();
             }
-            
+
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -64,8 +71,9 @@ namespace WizToolboox
                             else
                                 MessageBox.Show("The files also contains C:/, it MAY destruct your pc", "Much worse than expected", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
-                    
-                    if (System.Text.RegularExpressions.Regex.IsMatch(fileRead.ReadToEnd().ToString(), "((?!::).*^(echo ([>]*.(con|aux|nul))))", System.Text.RegularExpressions.RegexOptions.IgnoreCase)) {
+
+                    if (System.Text.RegularExpressions.Regex.IsMatch(fileRead.ReadToEnd().ToString(), "((?!::).*^(echo ([>]*.(con|aux|nul))))", System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                    {
                         MessageBox.Show("It also seems to contain some con,aux,nul writing.", "con/aux/nul overwrite", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
                     else
@@ -77,10 +85,11 @@ namespace WizToolboox
 
             }
         }
-        
+
         private void button2_Click(object sender, RoutedEventArgs e)
-        {   var downloadContext = new Down();
-            WindowsDown.Add(downloadContext);          
+        {
+            var downloadContext = new Down();
+            WindowsDown.Add(downloadContext);
             downloadContext.Show();
         }
     }
