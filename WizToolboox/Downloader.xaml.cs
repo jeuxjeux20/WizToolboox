@@ -19,20 +19,31 @@ namespace WizToolboox
     /// <summary>
     /// Logique d'interaction pour Downloader.xaml
     /// </summary>
+
+    public static class Utilities
+    {
+        public static long UnixTimeNow()
+        {
+            var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+            return (long)timeSpan.TotalSeconds;
+        }
+    }
+    
     public partial class Downloader : Window
     {
         private string filetype;
         private HttpResponseMessage response;
-        System.Net.Http.HttpClient client = new HttpClient();
+        HttpClient client = new HttpClient();
         WebClient wc = new WebClient();
         private string urlF;
         public Downloader(string url)
         {
+           
             InitializeComponent();
-            progress = new Progress<int>(value => omgProg.Value = value);
+            fromText.Text = "Downloading from " + url;
+            progress = new Progress<int>(value => { omgProg.Value = value; omgProg.IsIndeterminate = false; });
 #pragma warning disable CS4014 // Dans la mesure où cet appel n'est pas attendu, l'exécution de la méthode actuelle continue avant la fin de l'appel
             init2(url);
-
 #pragma warning restore CS4014 // Dans la mesure où cet appel n'est pas attendu, l'exécution de la méthode actuelle continue avant la fin de l'appel
             ContentRendered += Downloader_ContentRendered;
         }
@@ -52,10 +63,11 @@ namespace WizToolboox
 
 
             var thisThingy = test(url).Result;
-            urlF = AppDomain.CurrentDomain.BaseDirectory + DateTime.UtcNow.Ticks + $".{thisThingy}";
+            urlF = AppDomain.CurrentDomain.BaseDirectory + Utilities.UnixTimeNow() + $".{thisThingy}";
             
             wc.DownloadFileAsync(new Uri(url),
             urlF);
+            
 
         }
 
@@ -78,6 +90,7 @@ namespace WizToolboox
             progress.Report(e.ProgressPercentage);
             Application.Current.Dispatcher.Invoke(() => okek.Content = $"{e.BytesReceived}/{e.TotalBytesToReceive} Bytes");
         }
+
         
     }
 }

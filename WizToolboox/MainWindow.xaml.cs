@@ -23,10 +23,10 @@ namespace WizToolboox
     public partial class MainWindow : Window
     {
         public MainWindow()
-        {            
+        {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
-            
+
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -55,8 +55,16 @@ namespace WizToolboox
             }
             catch (Exception)
             {
-                fileDialog.InitialDirectory = (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+                try
+                {
+                    fileDialog.InitialDirectory = (Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+                }
+                catch (Exception)
+                {
+                    fileDialog.InitialDirectory = (Environment.GetFolderPath(Environment.SpecialFolder.MyComputer));
+                }
             }
+
             if (fileDialog.ShowDialog() == true)
             {
                 using (var fileRead = new StreamReader(fileDialog.OpenFile()))

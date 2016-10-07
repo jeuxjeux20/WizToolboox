@@ -5,24 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WizToolboox"
         mc:Ignorable="d"
-        Title="Downloader" Height="154" Width="489.333">
+        Title="Downloader" Height="165" Width="607.333">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="83*"/>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="54*"/>
         </Grid.RowDefinitions>
-        <Viewbox>
+        <Viewbox d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
             <Label x:Name="label" Content="Plz wait xd" Height="auto" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Viewbox>
 
-        <Grid Height="auto" Width="auto" Grid.Row="1">
+        <Grid Height="auto" Width="auto" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
             <Grid.RowDefinitions>
-                <RowDefinition Height="43*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="34*"/>
                 <RowDefinition Height="40*"/>
             </Grid.RowDefinitions>
-            <ProgressBar x:Name="omgProg" Margin="0,0,0,0" Width="auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
-            <Viewbox Margin="0,0,0,0" Width="auto" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+            <ProgressBar x:Name="omgProg" Margin="0,0,0,0" Width="auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Grid.Row="2" IsIndeterminate="True"/>
+            <Viewbox Margin="0,0,0,0" Width="auto" Grid.Row="2">
                 <Label x:Name="okek" Content="0/0 Bytes" Height="auto" Width="auto"/>
+            </Viewbox>
+            <Viewbox Margin="0,0,0,0" Grid.Row="1" Height="auto" Width="auto">
+                <TextBlock x:Name="fromText" HorizontalAlignment="Left" Margin="0,0,0,0"  TextWrapping="Wrap" Text="Downloading from..." VerticalAlignment="Top"/>
             </Viewbox>
         </Grid>
     </Grid>

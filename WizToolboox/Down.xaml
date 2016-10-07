@@ -5,17 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WizToolboox"
         mc:Ignorable="d"
-        Title="Down" Height="378.701" Width="450">
+        Title="Down" Height="412" Width="459">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
     <Grid>
 
-        <Viewbox HorizontalAlignment="Center" Height="auto" Margin="0,0,0,0" Width="auto">
+        <Viewbox Height="auto" Margin="0,0,0,0" Width="auto">
             <Grid Width="auto" Height="auto">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" MinHeight="48.04"/>
-                    <RowDefinition Height="Auto" MinHeight="14.96"/>
+                    <RowDefinition Height="Auto" MinHeight="41"/>
+                    <RowDefinition Height="Auto" MinHeight="24"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="button" Content="Try to download xd" Margin="2.076,0,2.075,0" Width="auto" Grid.Row="0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="button_Click" />
-                <TextBox x:Name="textBox" Margin="0,-3,0,0" TextWrapping="Wrap" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="8" AutomationProperties.HelpText="URL"/>
+                <Button x:Name="button" Content="Try to download xd" Margin="2,0" Width="auto" Grid.Row="0" Click="button_Click" IsEnabled="False" />
+                <StackPanel Grid.Row="1" Margin="0,4,0,0">
+                    <Label x:Name="label" Content="Type your URL here" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="6"/>
+                    <TextBox x:Name="textBox"  TextWrapping="Wrap" Grid.Row="1" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="8" AutomationProperties.HelpText="The URL goes here..." ToolTip="Type the URL here !" BorderBrush="#FF1E54F7" Background="#FFD1D1F9"/>
+                    
+                </StackPanel>
             </Grid>
         </Viewbox>
     </Grid>

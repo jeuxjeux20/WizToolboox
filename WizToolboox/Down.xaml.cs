@@ -22,12 +22,25 @@ namespace WizToolboox
         public Down()
         {
             InitializeComponent();
+            textBox.TextChanged += TextBox_TextChanged;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (textBox.Text.Length > 0)
+                button.IsEnabled = true;
+            else
+                button.IsEnabled = false;        
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            new Downloader(textBox.Text).Show();
-            
+            string url = textBox.Text;
+            if (!(url.Contains("http://") || url.Contains("https://")))
+            {
+                url = $"http://{url}";
+            }
+            new Downloader(url).Show();           
         }
     }
 }
