@@ -7,15 +7,56 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
         ResizeMode="CanMinimize">
+    <Window.Resources>
+
+        <Storyboard x:Key="OnClick1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="button2">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="11"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="12"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="109"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="110"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.7" Value="6"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button2">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="-84"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-85"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="-1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.7" Value="-2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="button2">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="29.252"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.7" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="360"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.2" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="button2">
+            <BeginStoryboard Storyboard="{StaticResource OnClick1}"/>
+            <BeginStoryboard Storyboard="{StaticResource OnClick1}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid HorizontalAlignment="Left" Width="517">
         <Grid.RowDefinitions>
-            <RowDefinition Height="92*"/>
-            <RowDefinition Height="227*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="85*"/>
+            <RowDefinition Height="211*"/>
         </Grid.RowDefinitions>
-        <Viewbox Margin="0,0,0,-1.191">
+        <Viewbox Margin="0,0,0,0" Grid.Row="1">
             <Label x:Name="align" Content="The WizToolbox" Height="26.851" Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Viewbox>
-        <TabControl x:Name="tabPanel" Margin="0,10,0,0" Grid.Row="1">
+        <TabControl x:Name="tabPanel" Margin="0,10,0,0" Grid.Row="2">
             <TabItem Header="Main Tools">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
@@ -25,11 +66,39 @@
                     <UniformGrid x:Name="Rd_tools" Margin="7,10,10,10">
                         <Button x:Name="button" Content="Check a file" HorizontalAlignment="Left" Style="{DynamicResource SimpleButton}" Width="111" Margin="0,0,0,1.537" Click="button_Click"/>
                     </UniformGrid>
-                    <Button x:Name="button2" Content="Down test" HorizontalAlignment="Left" Height="31" Margin="10,98,0,0" VerticalAlignment="Top" Width="71" Grid.Row="1" Click="button2_Click"/>
+                    <Button x:Name="button2" Content="Down test" HorizontalAlignment="Left" Height="31" Margin="0,95.347,0,0" VerticalAlignment="Top" Width="71" Grid.Row="1" Click="button2_Click" RenderTransformOrigin="0.5,0.5">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
 
                 </Grid>
             </TabItem>
             <Button x:Name="button1" Content="Button" Height="31" Width="88"/>
         </TabControl>
+        <Menu>
+
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Repeat">
+                    <GradientStop Color="#FFC1B9B9" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+            <MenuItem x:Name="menuItem" Header="About..." RenderTransformOrigin="0.5,0.5" Click="aboutMenuClick">
+                <MenuItem.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </MenuItem.RenderTransform>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

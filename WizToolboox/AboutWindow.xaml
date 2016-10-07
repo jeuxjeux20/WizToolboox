@@ -1,0 +1,55 @@
+﻿<Window x:Class="WizToolboox.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WizToolboox.Convert"
+        mc:Ignorable="d"
+        Title="AboutWindow" Height="298" Width="486">
+    <Window.Resources>
+        <local:MathConvert x:Key="MathConvert"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="96*"/>
+            <RowDefinition Height="173*"/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Row="0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+            <Label x:Name="WizToolbox" Content="WizToolbox"/>
+        </Viewbox>
+        <GridSplitter Grid.Row="1" Width="auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="5" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+        <DockPanel x:Name="dockPanel" Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+            <ScrollViewer DockPanel.Dock="Left" Height="auto" HorizontalAlignment="Left">
+                <UniformGrid x:Name="uniformGrid" Rows="2" Width="{Binding ActualWidth,  Converter={StaticResource MathConvert}, ElementName=dockPanel, Mode=OneWay}">
+                    <Viewbox Margin="0,0,0,2">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="jeuxjeux20.png" Stretch="Fill" Width="32" Height="32" HorizontalAlignment="Left"/>
+                            <Viewbox>
+                                <Label Content="jeuxjeux20" FontSize="6"/>
+                            </Viewbox>
+                        </StackPanel>
+                    </Viewbox>
+                    <Viewbox>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="xez.jpg" Stretch="Fill" Width="32" Height="32" HorizontalAlignment="Left"/>
+                            <Viewbox>
+                                <Label Content="xezrunner" FontSize="6"/>
+                            </Viewbox>
+                        </StackPanel>
+                    </Viewbox>
+                </UniformGrid>
+            </ScrollViewer>
+            <UniformGrid DockPanel.Dock="Right" HorizontalAlignment="Center" VerticalAlignment="Center" Rows="2">
+                <Viewbox>
+                    <TextBlock>This has been made by <Bold>jeuxjeux20</Bold> <LineBreak/> with the little help of <Span Foreground="Blue">xezrunner</Span></TextBlock>
+                </Viewbox>
+                <Viewbox>
+                    <TextBlock x:Name="ver">Version : unknown</TextBlock>
+                </Viewbox>
+            </UniformGrid>
+            <!-- Devs -->
+
+        </DockPanel>
+
+    </Grid>
+</Window>

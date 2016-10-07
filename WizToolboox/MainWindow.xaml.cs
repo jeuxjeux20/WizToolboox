@@ -28,7 +28,7 @@ namespace WizToolboox
             Loaded += MainWindow_Loaded;
 
         }
-
+        private AboutWindow aboutOpened;
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             Closing += MainWindow_Closing;
@@ -99,6 +99,12 @@ namespace WizToolboox
             var downloadContext = new Down();
             WindowsDown.Add(downloadContext);
             downloadContext.Show();
+        }
+
+        private void aboutMenuClick(object sender, RoutedEventArgs e)
+        {
+            aboutOpened = new AboutWindow();
+            aboutOpened.Show();
         }
     }
 }
