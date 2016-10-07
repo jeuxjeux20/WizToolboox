@@ -36,7 +36,7 @@ namespace WizToolboox
         HttpClient client = new HttpClient();
         WebClient wc = new WebClient();
         private string urlF;
-        public Downloader(string url)
+        public Downloader(string url,string filePath)
         {
            
             InitializeComponent();
@@ -63,7 +63,7 @@ namespace WizToolboox
 
 
             var thisThingy = test(url).Result;
-            urlF = AppDomain.CurrentDomain.BaseDirectory + Utilities.UnixTimeNow() + $".{thisThingy}";
+            urlF = Down.filePath + @"/" + Utilities.UnixTimeNow() + $".{thisThingy}";
             
             wc.DownloadFileAsync(new Uri(url),
             urlF);

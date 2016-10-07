@@ -7,11 +7,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace WizToolboox
 {
     /// <summary>
@@ -19,6 +19,7 @@ namespace WizToolboox
     /// </summary>
     public partial class Down : Window
     {
+        public static string filePath { get; private set; } = AppDomain.CurrentDomain.BaseDirectory;
         public Down()
         {
             InitializeComponent();
@@ -40,7 +41,22 @@ namespace WizToolboox
             {
                 url = $"http://{url}";
             }
-            new Downloader(url).Show();           
+            new Downloader(url,filePath).Show();           
+        }
+
+        private void Browsing(object sender, RoutedEventArgs e)
+        {
+            var dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                pathBox.Text = dialog.SelectedPath;
+                filePath = dialog.SelectedPath;
+            }
+        }
+
+        private void Input(object sender, TextCompositionEventArgs e)
+        {
+            pathBox.Text = filePath;
         }
     }
 }
