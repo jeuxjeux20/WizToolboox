@@ -16,19 +16,40 @@ using System.Windows.Shapes;
 
 namespace WizToolboox
 {
+    
+    
     /// <summary>
-    /// Logique d'interaction pour Downloader.xaml
+    /// A useless class xd <![CDATA[idk]]>
     /// </summary>
-
     public static class Utilities
     {
-        public static long UnixTimeNow()
+        /// <summary>
+        /// This function uses the current date ; and make it acceptable for a file name
+        /// </summary>
+        /// <returns>A formatted file name with unvalid symbols replaced with an underscore</returns>
+        public static string TimeToFile()
         {
-            var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
-            return (long)timeSpan.TotalSeconds;
+            //var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+            //return timeSpan.TotalSeconds.ToString();
+            string stringy = DateTime.Today.ToShortTimeString() + DateTime.Today.ToShortDateString();
+            string formatted = string.Empty;
+            char preced = 'k';
+            foreach (var item in stringy.ToCharArray().ToList())
+            {
+                if (char.IsLetterOrDigit(item))
+                {
+                    formatted += item;
+                }
+                else if (preced != '_')
+                {
+                    formatted += '_';
+                }
+                preced = item;
+            }
+            return formatted;
         }
     }
-    
+
     public partial class Downloader : Window
     {
         private string filetype;
@@ -36,9 +57,9 @@ namespace WizToolboox
         HttpClient client = new HttpClient();
         WebClient wc = new WebClient();
         private string urlF;
-        public Downloader(string url,string filePath)
+        public Downloader(string url, string filePath)
         {
-           
+
             InitializeComponent();
             fromText.Text = "Downloading from " + url;
             progress = new Progress<int>(value => { omgProg.Value = value; omgProg.IsIndeterminate = false; });
@@ -63,11 +84,11 @@ namespace WizToolboox
 
 
             var thisThingy = test(url).Result;
-            urlF = Down.filePath + @"/" + Utilities.UnixTimeNow() + $".{thisThingy}";
-            
+            urlF = Down.filePath + @"/" + Utilities.TimeToFile() + $".{thisThingy}";
+
             wc.DownloadFileAsync(new Uri(url),
             urlF);
-            
+
 
         }
 
@@ -78,19 +99,20 @@ namespace WizToolboox
         }
 
         IProgress<int> progress = null;
-        
+
         private async Task<string> test(string url)
         {
             response = await client.GetAsync(url);
             filetype = response.Content.Headers.ContentType.MediaType;
             return filetype.Substring(filetype.IndexOf('/') + 1);
         }
+        
         private void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progress.Report(e.ProgressPercentage);
             Application.Current.Dispatcher.Invoke(() => okek.Content = $"{e.BytesReceived}/{e.TotalBytesToReceive} Bytes");
         }
 
-        
+
     }
 }

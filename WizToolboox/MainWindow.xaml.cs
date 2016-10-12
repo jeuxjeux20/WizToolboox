@@ -26,12 +26,16 @@ namespace WizToolboox
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
-
+            
         }
         private AboutWindow aboutOpened;
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             Closing += MainWindow_Closing;
+            if (DateTime.Today.Day == 12 && DateTime.Today.Month == 10)
+            {
+                new XezBirthday().Show();
+            }
         }
 
         private List<Down> WindowsDown = new List<Down>();

@@ -8,8 +8,8 @@
         Title="Downloader" Height="165" Width="607.333">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="44*"/>
-            <RowDefinition Height="71*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="95*"/>
         </Grid.RowDefinitions>
         <Viewbox d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
             <Label x:Name="label" Content="Plz wait xd" Height="auto" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
